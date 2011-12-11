@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111211210705) do
+ActiveRecord::Schema.define(:version => 20111211211351) do
 
   create_table "articles", :force => true do |t|
     t.integer  "parent_id"
@@ -49,10 +49,12 @@ ActiveRecord::Schema.define(:version => 20111211210705) do
     t.text     "description"
     t.text     "keywords"
     t.string   "url"
-    t.integer  "metatagable_id",   :null => false
-    t.string   "metatagable_type", :null => false
+    t.integer  "metatagable_id",                      :null => false
+    t.string   "metatagable_type",                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "noindex",          :default => false, :null => false
+    t.boolean  "nofollow",         :default => false, :null => false
   end
 
   add_index "meta_tags", ["metatagable_id", "metatagable_type"], :name => "index_meta_tags_on_metatagable_id_and_metatagable_type"
