@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111211162446) do
+ActiveRecord::Schema.define(:version => 20111211181243) do
 
   create_table "articles", :force => true do |t|
     t.integer  "parent_id"
@@ -28,5 +28,11 @@ ActiveRecord::Schema.define(:version => 20111211162446) do
 
   add_index "articles", ["parent_id"], :name => "index_articles_on_parent_id"
   add_index "articles", ["project_id"], :name => "index_articles_on_project_id"
+
+  create_table "projects", :force => true do |t|
+    t.string   "title",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
