@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111211181243) do
+ActiveRecord::Schema.define(:version => 20111211191515) do
 
   create_table "articles", :force => true do |t|
     t.integer  "parent_id"
@@ -29,8 +29,32 @@ ActiveRecord::Schema.define(:version => 20111211181243) do
   add_index "articles", ["parent_id"], :name => "index_articles_on_parent_id"
   add_index "articles", ["project_id"], :name => "index_articles_on_project_id"
 
+  create_table "project_vacancies", :force => true do |t|
+    t.integer  "project_id", :null => false
+    t.integer  "vacancy_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "project_vacancies", ["project_id"], :name => "index_project_vacancies_on_project_id"
+  add_index "project_vacancies", ["vacancy_id"], :name => "index_project_vacancies_on_vacancy_id"
+
   create_table "projects", :force => true do |t|
     t.string   "title",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vacancies", :force => true do |t|
+    t.integer  "skin_id"
+    t.integer  "position",             :default => 1,     :null => false
+    t.boolean  "is_deleted",           :default => false, :null => false
+    t.boolean  "is_published",         :default => true,  :null => false
+    t.boolean  "is_shown_in_menu",     :default => false, :null => false
+    t.boolean  "is_preview_published", :default => false, :null => false
+    t.string   "title",                                   :null => false
+    t.text     "preview"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
