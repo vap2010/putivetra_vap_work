@@ -6,6 +6,8 @@ gem 'rails', '3.1.3'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem 'rails_admin', :git => "https://github.com/sferik/rails_admin.git"
+gem 'paperclip'
 
 gem 'json'
 
