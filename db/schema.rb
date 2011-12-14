@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214203841) do
+ActiveRecord::Schema.define(:version => 20111214214219) do
 
   create_table "agencies", :force => true do |t|
     t.string   "title",      :null => false
@@ -62,12 +62,80 @@ ActiveRecord::Schema.define(:version => 20111214203841) do
   add_index "articles", ["parent_id"], :name => "index_articles_on_parent_id"
   add_index "articles", ["project_id"], :name => "index_articles_on_project_id"
 
+  create_table "brand_agencies", :force => true do |t|
+    t.integer  "brand_id",                  :null => false
+    t.integer  "agency_id",                 :null => false
+    t.integer  "position",   :default => 1, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "brand_agencies", ["agency_id"], :name => "index_brand_agencies_on_agency_id"
+  add_index "brand_agencies", ["brand_id"], :name => "index_brand_agencies_on_brand_id"
+
+  create_table "brand_distributors", :force => true do |t|
+    t.integer  "brand_id",                      :null => false
+    t.integer  "distributor_id",                :null => false
+    t.integer  "position",       :default => 1, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "brand_distributors", ["brand_id"], :name => "index_brand_distributors_on_brand_id"
+  add_index "brand_distributors", ["distributor_id"], :name => "index_brand_distributors_on_distributor_id"
+
   create_table "brand_files", :force => true do |t|
     t.string   "title",                   :null => false
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "brand_id",                :null => false
+  end
+
+  create_table "brand_product_types", :force => true do |t|
+    t.integer  "product_type_id",                :null => false
+    t.integer  "brand_id",                       :null => false
+    t.integer  "position",        :default => 1, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "brand_product_types", ["brand_id"], :name => "index_brand_product_types_on_brand_id"
+  add_index "brand_product_types", ["product_type_id"], :name => "index_brand_product_types_on_product_type_id"
+
+  create_table "brand_regions", :force => true do |t|
+    t.integer  "brand_id",                  :null => false
+    t.integer  "region_id",                 :null => false
+    t.integer  "position",   :default => 1, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "brand_regions", ["brand_id"], :name => "index_brand_regions_on_brand_id"
+  add_index "brand_regions", ["region_id"], :name => "index_brand_regions_on_region_id"
+
+  create_table "brands", :force => true do |t|
+    t.string   "title",                                      :null => false
+    t.string   "logo_large_file_name"
+    t.string   "logo_large_content_type"
+    t.integer  "logo_large_file_size"
+    t.datetime "logo_large_updated_at"
+    t.string   "logo_small_file_name"
+    t.string   "logo_small_content_type"
+    t.integer  "logo_small_file_size"
+    t.datetime "logo_small_updated_at"
+    t.string   "foundation_year"
+    t.string   "country"
+    t.string   "speciality"
+    t.string   "price_band"
+    t.text     "preview"
+    t.text     "description"
+    t.text     "history"
+    t.boolean  "is_dismissed",            :default => false, :null => false
+    t.string   "manager_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -117,6 +185,7 @@ ActiveRecord::Schema.define(:version => 20111214203841) do
     t.datetime "attachment_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "brand_id",                :null => false
   end
 
   create_table "product_types", :force => true do |t|
