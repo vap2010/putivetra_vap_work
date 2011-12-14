@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214195447) do
+ActiveRecord::Schema.define(:version => 20111214195841) do
 
   create_table "articles", :force => true do |t|
     t.integer  "parent_id"
@@ -103,6 +103,12 @@ ActiveRecord::Schema.define(:version => 20111214195447) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "regions", :force => true do |t|
+    t.string   "title",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
