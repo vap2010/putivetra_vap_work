@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214200426) do
+ActiveRecord::Schema.define(:version => 20111214202448) do
 
   create_table "agencies", :force => true do |t|
     t.string   "title",      :null => false
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(:version => 20111214200426) do
 
   add_index "articles", ["parent_id"], :name => "index_articles_on_parent_id"
   add_index "articles", ["project_id"], :name => "index_articles_on_project_id"
+
+  create_table "brand_files", :force => true do |t|
+    t.string   "title",                   :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "distributors", :force => true do |t|
     t.string   "title",      :null => false
@@ -72,6 +82,16 @@ ActiveRecord::Schema.define(:version => 20111214200426) do
   end
 
   add_index "meta_tags", ["metatagable_id", "metatagable_type"], :name => "index_meta_tags_on_metatagable_id_and_metatagable_type"
+
+  create_table "price_files", :force => true do |t|
+    t.string   "title",                   :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "product_types", :force => true do |t|
     t.string   "title",      :null => false
