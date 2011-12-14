@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214202448) do
+ActiveRecord::Schema.define(:version => 20111214203841) do
 
   create_table "agencies", :force => true do |t|
     t.string   "title",      :null => false
@@ -18,6 +18,32 @@ ActiveRecord::Schema.define(:version => 20111214202448) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "album_files", :force => true do |t|
+    t.string   "title",                                     :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "position",                :default => 1,    :null => false
+    t.boolean  "is_published",            :default => true, :null => false
+    t.integer  "album_id",                                  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "album_files", ["album_id"], :name => "index_album_files_on_album_id"
+
+  create_table "albums", :force => true do |t|
+    t.string   "title"
+    t.string   "albumable_type",                :null => false
+    t.integer  "albumable_id",                  :null => false
+    t.integer  "position",       :default => 1, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "albums", ["albumable_id", "albumable_type"], :name => "index_albums_on_albumable_id_and_albumable_type"
 
   create_table "articles", :force => true do |t|
     t.integer  "parent_id"
