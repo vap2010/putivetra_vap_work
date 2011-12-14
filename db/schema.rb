@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214195841) do
+ActiveRecord::Schema.define(:version => 20111214200213) do
+
+  create_table "agencies", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "articles", :force => true do |t|
     t.integer  "parent_id"
