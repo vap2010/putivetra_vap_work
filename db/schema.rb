@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111211211351) do
+ActiveRecord::Schema.define(:version => 20111214195447) do
 
   create_table "articles", :force => true do |t|
     t.integer  "parent_id"
@@ -58,6 +58,12 @@ ActiveRecord::Schema.define(:version => 20111211211351) do
   end
 
   add_index "meta_tags", ["metatagable_id", "metatagable_type"], :name => "index_meta_tags_on_metatagable_id_and_metatagable_type"
+
+  create_table "product_types", :force => true do |t|
+    t.string   "title",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "project_events", :force => true do |t|
     t.integer  "project_id", :null => false
