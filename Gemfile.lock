@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/sferik/rails_admin.git
+  remote: git://github.com/sferik/rails_admin.git
   revision: 6dcac95259b47d74d892a5d6e39c9545a5995ad7
   specs:
     rails_admin (0.0.1)
