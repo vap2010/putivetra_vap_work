@@ -38,5 +38,4 @@ production:
   database: putivetra_production
   pool: 5
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: wGE4xpeY

@@ -39,3 +39,10 @@ end
 
 
 gem "devise"
+
+gem 'therubyracer', :require => false
+
+group :development do
+  gem "capistrano"
+end
+
