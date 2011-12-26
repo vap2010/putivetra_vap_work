@@ -1,7 +1,7 @@
 class Brand < ActiveRecord::Base
   has_attached_file :logo_large
   has_attached_file :logo_small
-  validates :title, :is_dismissed, :presence => true
+  validates :title, :presence => true
   has_many :brand_product_type, :dependent => :destroy
   has_many :product_type, :through => :brand_product_type
   has_many :brand_regions, :dependent => :destroy

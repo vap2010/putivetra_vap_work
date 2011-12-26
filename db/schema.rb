@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214221125) do
+ActiveRecord::Schema.define(:version => 20111226202716) do
 
   create_table "agencies", :force => true do |t|
     t.string   "title",      :null => false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20111214221125) do
     t.integer  "position",       :default => 1, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
   end
 
   add_index "albums", ["albumable_id", "albumable_type"], :name => "index_albums_on_albumable_id_and_albumable_type"
@@ -61,6 +62,23 @@ ActiveRecord::Schema.define(:version => 20111214221125) do
 
   add_index "articles", ["parent_id"], :name => "index_articles_on_parent_id"
   add_index "articles", ["project_id"], :name => "index_articles_on_project_id"
+
+  create_table "batches", :force => true do |t|
+    t.integer  "brand_id",     :null => false
+    t.integer  "category_id",  :null => false
+    t.string   "title",        :null => false
+    t.string   "labeling"
+    t.string   "range"
+    t.text     "description"
+    t.text     "preview"
+    t.text     "params_short"
+    t.text     "params_full"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "batches", ["brand_id"], :name => "index_batches_on_brand_id"
+  add_index "batches", ["category_id"], :name => "index_batches_on_category_id"
 
   create_table "brand_agencies", :force => true do |t|
     t.integer  "brand_id",                  :null => false
