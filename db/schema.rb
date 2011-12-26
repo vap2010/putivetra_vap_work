@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111226203057) do
+ActiveRecord::Schema.define(:version => 20111226204224) do
 
   create_table "agencies", :force => true do |t|
     t.string   "title",      :null => false
@@ -187,6 +187,16 @@ ActiveRecord::Schema.define(:version => 20111226203057) do
     t.text     "body"
     t.datetime "published_at",                            :null => false
     t.datetime "published_until"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "features", :force => true do |t|
+    t.string   "title",      :null => false
+    t.string   "group"
+    t.string   "variance"
+    t.string   "value"
+    t.string   "unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
