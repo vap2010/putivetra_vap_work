@@ -10,6 +10,7 @@ gem 'rails_admin', :git => "git://github.com/sferik/rails_admin.git"
 gem 'rails_admin-treeview'
 gem 'paperclip'
 gem 'fastercsv'
+gem 'ancestry'
 
 gem 'json'
 
