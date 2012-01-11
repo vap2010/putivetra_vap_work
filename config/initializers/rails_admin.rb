@@ -81,4 +81,10 @@ RailsAdmin.config do |config|
     end
   end
 
+  if Category.table_exists?
+    config.model Category do
+      treeview true
+    end
+  end
+
 end

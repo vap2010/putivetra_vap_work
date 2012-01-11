@@ -7,6 +7,7 @@ gem 'rails', '3.1.3'
 
 gem 'mysql2'
 gem 'rails_admin', :git => "git://github.com/sferik/rails_admin.git"
+gem 'rails_admin-treeview'
 gem 'paperclip'
 gem 'fastercsv'
 

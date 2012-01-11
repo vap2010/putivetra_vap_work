@@ -5,4 +5,10 @@ class Category < ActiveRecord::Base
   has_many :batches, :dependent => :destroy
 
   before_create :build_album
+
+  class << self
+    def roots
+      where(:parent_id => nil)
+    end
+  end
 end
