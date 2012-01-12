@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(:version => 20120111230706) do
     t.boolean  "are_children_published", :default => true,  :null => false
     t.boolean  "is_shown_in_menu",       :default => false, :null => false
     t.boolean  "is_preview_published",   :default => false, :null => false
+    t.string   "title",                                     :null => false
+    t.text     "preview"
+    t.text     "body"
   end
 
   add_index "articles", ["parent_id"], :name => "index_articles_on_parent_id"
