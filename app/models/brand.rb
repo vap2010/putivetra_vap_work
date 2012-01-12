@@ -1,4 +1,5 @@
 class Brand < ActiveRecord::Base
+  include Nodeable
   has_attached_file :logo_large
   has_attached_file :logo_small
   validates :title, :presence => true

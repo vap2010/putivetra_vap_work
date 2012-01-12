@@ -57,6 +57,7 @@ RailsAdmin.config do |config|
           end
         end
         include_all_fields
+        field :nodeable, :polymorphic_association
         exclude_fields :ancestry
       end
       include_all_fields
