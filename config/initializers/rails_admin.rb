@@ -1,5 +1,11 @@
 I18n.locale = :ru
 RailsAdmin.config do |config|
+  if Article.table_exists?
+    config.model Article do
+      treeview true
+    end
+  end
+
   if MetaTag.table_exists?
     config.model MetaTag do
       edit do
