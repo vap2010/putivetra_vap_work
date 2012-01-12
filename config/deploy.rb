@@ -19,7 +19,7 @@ role :db,  server, :primary => true # This is where Rails migrations will run
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
-#after "deploy:update_code", "deploy:migrate"
+after "deploy:update_code", "deploy:migrate"
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
