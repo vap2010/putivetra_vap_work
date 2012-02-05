@@ -1,5 +1,11 @@
 I18n.locale = :ru
 RailsAdmin.config do |config|
+
+  config.actions do
+    all
+    root :tools
+  end
+
   if Article.table_exists?
     config.model Article do
       treeview true

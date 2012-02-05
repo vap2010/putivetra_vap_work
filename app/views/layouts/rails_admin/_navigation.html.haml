@@ -2,8 +2,6 @@
 - root_models = models.select { |model| model.parent == :root }
 
 %ul#nav.navigation
-  %li{:class => ("active" if @page_type == "dashboard")}
-    = link_to(t("admin.dashboard.name"), dashboard_path)
   - [Article, Category].each do |model|
     = render :partial => "rails_admin/sidebar_item", :locals => {:model => RailsAdmin.config(model)}
 %a{:href => "javascript://", :class => "js-toggle-opt-models"} [Все модели]

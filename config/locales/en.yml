@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+  admin:
+    actions:
+      tools:
+        menu: Tools
+        breadcrumb: Tools
+        title: Tools
