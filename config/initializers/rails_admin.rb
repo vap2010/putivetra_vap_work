@@ -52,7 +52,6 @@ RailsAdmin.config do |config|
     config.model Event do
       edit do
         include_all_fields
-        exclude_fields :project_events
       end
     end
   end
@@ -63,7 +62,6 @@ RailsAdmin.config do |config|
         field :parent_id, :enum do
           enum do
             collection = Node.select(:id).where("id != ?", bindings[:object].id)
-            collection = collection.where(:project_id => bindings[:object].project_id) if bindings[:object].project_id
             collection = collection.reject {|node| bindings[:object].descendant_ids.include?(node.id) }
             collection.map{|node| node.id}
           end
@@ -87,15 +85,6 @@ RailsAdmin.config do |config|
     end
   end
 
-  if Project.table_exists?
-    config.model Project do
-      edit do
-        include_all_fields
-        exclude_fields :project_vacancies, :project_events
-      end
-    end
-  end
-
   if Region.table_exists?
     config.model Region do
       edit do
@@ -109,7 +98,6 @@ RailsAdmin.config do |config|
     config.model Vacancy do
       edit do
         include_all_fields
-        exclude_fields :project_vacancies
       end
     end
   end

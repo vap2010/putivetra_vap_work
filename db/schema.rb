@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120111230706) do
+ActiveRecord::Schema.define(:version => 20120228093814) do
 
   create_table "agencies", :force => true do |t|
     t.string   "title",      :null => false
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(:version => 20120111230706) do
     t.integer  "skin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "project_id",                                :null => false
     t.integer  "position",               :default => 1,     :null => false
     t.boolean  "is_deleted",             :default => false, :null => false
     t.boolean  "is_published",           :default => true,  :null => false
@@ -64,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20120111230706) do
   end
 
   add_index "articles", ["parent_id"], :name => "index_articles_on_parent_id"
-  add_index "articles", ["project_id"], :name => "index_articles_on_project_id"
 
   create_table "batches", :force => true do |t|
     t.integer  "brand_id",     :null => false
@@ -220,7 +218,6 @@ ActiveRecord::Schema.define(:version => 20120111230706) do
   add_index "meta_tags", ["metatagable_id", "metatagable_type"], :name => "index_meta_tags_on_metatagable_id_and_metatagable_type"
 
   create_table "nodes", :force => true do |t|
-    t.integer  "project_id",    :null => false
     t.string   "nodeable_type"
     t.integer  "nodeable_id"
     t.datetime "created_at"
@@ -230,7 +227,6 @@ ActiveRecord::Schema.define(:version => 20120111230706) do
 
   add_index "nodes", ["ancestry"], :name => "index_nodes_on_ancestry"
   add_index "nodes", ["nodeable_id"], :name => "index_nodes_on_nodeable_id"
-  add_index "nodes", ["project_id"], :name => "index_nodes_on_project_id"
 
   create_table "price_files", :force => true do |t|
     t.string   "title",                   :null => false
@@ -244,32 +240,6 @@ ActiveRecord::Schema.define(:version => 20120111230706) do
   end
 
   create_table "product_types", :force => true do |t|
-    t.string   "title",      :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "project_events", :force => true do |t|
-    t.integer  "project_id", :null => false
-    t.integer  "event_id",   :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "project_events", ["event_id"], :name => "index_project_events_on_event_id"
-  add_index "project_events", ["project_id"], :name => "index_project_events_on_project_id"
-
-  create_table "project_vacancies", :force => true do |t|
-    t.integer  "project_id", :null => false
-    t.integer  "vacancy_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "project_vacancies", ["project_id"], :name => "index_project_vacancies_on_project_id"
-  add_index "project_vacancies", ["vacancy_id"], :name => "index_project_vacancies_on_vacancy_id"
-
-  create_table "projects", :force => true do |t|
     t.string   "title",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
