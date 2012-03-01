@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120228093814) do
+ActiveRecord::Schema.define(:version => 20120301102926) do
 
   create_table "agencies", :force => true do |t|
     t.string   "title",      :null => false
@@ -216,17 +216,6 @@ ActiveRecord::Schema.define(:version => 20120228093814) do
   end
 
   add_index "meta_tags", ["metatagable_id", "metatagable_type"], :name => "index_meta_tags_on_metatagable_id_and_metatagable_type"
-
-  create_table "nodes", :force => true do |t|
-    t.string   "nodeable_type"
-    t.integer  "nodeable_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "ancestry"
-  end
-
-  add_index "nodes", ["ancestry"], :name => "index_nodes_on_ancestry"
-  add_index "nodes", ["nodeable_id"], :name => "index_nodes_on_nodeable_id"
 
   create_table "price_files", :force => true do |t|
     t.string   "title",                   :null => false

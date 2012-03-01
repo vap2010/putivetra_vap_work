@@ -56,26 +56,6 @@ RailsAdmin.config do |config|
     end
   end
 
-  if Node.table_exists?
-    config.model Node do
-      edit do
-        field :parent_id, :enum do
-          enum do
-            collection = Node.select(:id).where("id != ?", bindings[:object].id)
-            collection = collection.reject {|node| bindings[:object].descendant_ids.include?(node.id) }
-            collection.map{|node| node.id}
-          end
-        end
-        include_all_fields
-        field :nodeable, :polymorphic_association
-        exclude_fields :ancestry
-      end
-      include_all_fields
-      exclude_fields :ancestry
-      treeview true
-    end
-  end
-
   if ProductType.table_exists?
     config.model ProductType do
       edit do
