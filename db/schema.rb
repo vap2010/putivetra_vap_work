@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301102926) do
+ActiveRecord::Schema.define(:version => 20120301111227) do
 
   create_table "agencies", :force => true do |t|
     t.string   "title",      :null => false
@@ -201,6 +201,16 @@ ActiveRecord::Schema.define(:version => 20120301102926) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "links", :force => true do |t|
+    t.integer  "linkable_id",   :null => false
+    t.string   "linkable_type", :null => false
+    t.string   "linkage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "links", ["linkable_id", "linkable_type"], :name => "index_links_on_linkable_id_and_linkable_type"
 
   create_table "meta_tags", :force => true do |t|
     t.text     "title"

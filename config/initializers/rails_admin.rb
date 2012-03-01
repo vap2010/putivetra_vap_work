@@ -21,6 +21,15 @@ RailsAdmin.config do |config|
     end
   end
 
+  if Link.table_exists?
+    config.model Link do
+      edit do
+        include_all_fields
+        exclude_fields :linkable_type, :linkable_id
+      end
+    end
+  end
+
   if Brand.table_exists?
     config.model Brand do
       edit do
