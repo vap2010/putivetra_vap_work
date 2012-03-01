@@ -2,7 +2,8 @@ Putivetra::Application.routes.draw do
   devise_for :users
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-  root :to => "home#index"
+  match ':id', :to => "articles#show"
+  root :to => "articles#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

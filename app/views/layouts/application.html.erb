@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Putivetra</title>
+  <title>Putivetra | <%= @meta_tag.title %></title>
+  <meta name="description" content="<%= @meta_tag.description %>">
+  <meta name="keywords" content="<%= @meta_tag.keywords %>">
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
