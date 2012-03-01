@@ -7,6 +7,18 @@ module ArticlesHelper
     end
   end
 
+  def article_title meta_tag
+    meta_tag.try :title
+  end
+
+  def article_description meta_tag
+    meta_tag.try :description
+  end
+
+  def article_keywords meta_tag
+    meta_tag.try :keywords
+  end
+
   def article_parent article
     content_tag(:p) do
       "Parent: ".html_safe +
